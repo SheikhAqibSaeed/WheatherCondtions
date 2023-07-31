@@ -9,7 +9,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  void timer(){
+    Future.delayed(Duration(seconds: 4), () {
+      print("Hello World...");
+    });
+    print("You can other activity now..");
+  }
+
   int counter = 1;
+
+
   @override
   void initState() {
     super.initState();
