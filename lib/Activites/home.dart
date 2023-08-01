@@ -10,19 +10,39 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  void timer(){
-    Future.delayed(Duration(seconds: 4), () {
-      print("Hello World...");
+// Async : Funtion Start but Return Some Delayed.
+  // Future.delayed: Function Start after some Delayed.
+
+   late String? username1;
+
+  Future<void> getData() async {
+    // Simulate an asynchronous operation that takes 3 seconds to complete.
+    await Future.delayed(Duration(seconds: 3), () {
+      username1 = 'AqibSaeed';
     });
-    print("You can other activity now..");
   }
 
-  int counter = 1;
+  void showData() async {
+    // Wait for the getData() method to complete before printing the value.
+    await getData();
+    print("$username1");
+  }
 
+   //THis method is used to timer start after sometime.
+   // void timer(){
+   //   Future.delayed(Duration(seconds: 4), () {
+   //     print("Hello World...");
+   //   });
+   //   print("You can other activity now..");
+   // }
+
+  int counter = 1;
 
   @override
   void initState() {
     super.initState();
+    // timer();
+    showData();
     print("This is Init State.");
   }
 
